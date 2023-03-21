@@ -22,7 +22,6 @@ def video_frame_callback(frame):
 
 webrtc_streamer(
     key="key", 
-    video_processor_factory=VideoProcessor,
     mode=WebRtcMode.SENDRECV,
     rtc_configuration=RTCConfiguration({"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}), 
     async_processing=True,
