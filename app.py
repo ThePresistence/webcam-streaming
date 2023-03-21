@@ -1,6 +1,6 @@
-# from streamlit_webrtc import webrtc_streamer, RTCConfiguration
-# import av
-# import cv2
+from streamlit_webrtc import webrtc_streamer, RTCConfiguration
+import av
+import cv2
 
 # cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
@@ -22,5 +22,11 @@
 # 	)
 
 from streamlit_webrtc import webrtc_streamer
+def video_frame_callback(frame):
+    img = frame.to_ndarray(format="bgr24")
 
-webrtc_streamer(key="sample")
+    flipped = img[::-1,:,:] if flip else img
+
+    return av.VideoFrame.from_ndarray(flipped, format="bgr24")
+
+webrtc_streamer(key="example", video_frame_callback=video_frame_callback)
