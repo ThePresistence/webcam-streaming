@@ -2,7 +2,7 @@ import av
 import cv2
 import numpy as np
 import streamlit as st
-from streamlit_webrtc import WebRtcMode, webrtc_streamer
+from streamlit_webrtc import WebRtcMode, webrtc_streamer, RTCConfiguration
 
 def video_frame_callback(frame):
     img = frame.to_ndarray(format="bgr24")
