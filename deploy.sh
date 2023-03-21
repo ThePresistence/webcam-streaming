@@ -1,0 +1,1 @@
+git add .; git commit -m "done o done"; git push; clear
