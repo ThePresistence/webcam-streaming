@@ -14,7 +14,8 @@ def video_frame_callback(frame):
 webrtc_ctx = webrtc_streamer(
 	key="object-detection", 
     mode=WebRtcMode.SENDRECV,
-    rtc_configuration={"iceServers": [{"urls": ["turn:my-turn-server.mycompany.com:19403"]}]}, # 'turn:my-turn-server.mycompany.com:19403 # stun:stun.l.google.com:19302
+    rtc_configuration={"iceServers": [{"urls": ["turn:my-turn-server.mycompany.com:19403"], "username": 'optional-username',
+            "credentials": 'auth-token'}]}, # 'turn:my-turn-server.mycompany.com:19403 # stun:stun.l.google.com:19302
     video_frame_callback=video_frame_callback,
     # media_stream_constraints={"video": True, "audio": False},
     async_processing=True,
