@@ -11,11 +11,21 @@ def video_frame_callback(frame):
 
     return av.VideoFrame.from_ndarray(flipped, format="bgr24")
 
-webrtc_ctx = webrtc_streamer(
-	key="object-detection", 
+# webrtc_ctx = webrtc_streamer(
+# 	key="object-detection", 
+#     mode=WebRtcMode.SENDRECV,
+#     rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}, # 'turn:my-turn-server.mycompany.com:19403 # stun:stun.l.google.com:19302
+#     video_frame_callback=video_frame_callback,
+#     # media_stream_constraints={"video": True, "audio": False},
+#     async_processing=True,
+# )
+
+webrtc_streamer(
+    key="key", 
+    video_processor_factory=VideoProcessor,
     mode=WebRtcMode.SENDRECV,
-    rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}, # 'turn:my-turn-server.mycompany.com:19403 # stun:stun.l.google.com:19302
-    video_frame_callback=video_frame_callback,
-    # media_stream_constraints={"video": True, "audio": False},
+    rtc_configuration=RTCConfiguration({"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}), 
     async_processing=True,
-)
+    video_frame_callback=video_frame_callback
+
+	)
