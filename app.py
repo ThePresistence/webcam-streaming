@@ -12,6 +12,7 @@ def video_frame_callback(frame):
     return av.VideoFrame.from_ndarray(flipped, format="bgr24")
 
 webrtc_ctx = webrtc_streamer(
+	key="object-detection", 
     mode=WebRtcMode.SENDRECV,
     rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
     video_frame_callback=video_frame_callback,
